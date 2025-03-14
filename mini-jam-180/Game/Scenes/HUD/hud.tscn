@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cif7m3pxtn1uh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xkv3"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r6yo"]
+bg_color = Color(0.743349, 0.0675799, 6.73831e-07, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(40, 300)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4xkv3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6r6yo")
+fill_mode = 2
+show_percentage = false

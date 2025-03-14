@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciwpg8154rlsl"]
+
+[ext_resource type="PackedScene" uid="uid://cif7m3pxtn1uh" path="res://Game/Scenes/HUD/hud.tscn" id="1_acdbk"]
+
+[sub_resource type="Animation" id="Animation_imei6"]
+resource_name = "blinkfast"
+
+[sub_resource type="Animation" id="Animation_upvdq"]
+resource_name = "blinkin"
+
+[sub_resource type="Animation" id="Animation_7egod"]
+resource_name = "blinkout"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdnhn"]
+_data = {
+"blinkfast": SubResource("Animation_imei6"),
+"blinkin": SubResource("Animation_upvdq"),
+"blinkout": SubResource("Animation_7egod")
+}
+
+[node name="Vagao1" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("1_acdbk")]
+
+[node name="Blink" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fdnhn")
+}
