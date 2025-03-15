@@ -24,6 +24,7 @@ func _ready() -> void:
 	SignalManager.can_lantern.connect(enable_lantern)
 	SignalManager.change_lantern_position.connect(change_light_position)
 	SignalManager.reset.connect(blinked)
+	SignalManager.on_death.connect(death)
 	
 	point_light_2d.global_position = Vector2(-59,52)
 	initial_madness = GameManager.get_actual_madness()
@@ -75,10 +76,16 @@ func enable_lantern() -> void:
 	can_lantern = true
 
 func blinked() -> void: #libera atirar dnv e usar dnv a lanterna
-	can_lantern = true
-	can_shoot = true
+	enable_lantern()
+	enable_shoot()
+	#can_lantern = true
+	#can_shoot = true
 	
 
 func _on_lantern_timer_timeout() -> void:
 	can_lantern = false
 	point_light_2d.enabled = false
+
+func death() -> void:
+	can_lantern = false
+	can_shoot = false

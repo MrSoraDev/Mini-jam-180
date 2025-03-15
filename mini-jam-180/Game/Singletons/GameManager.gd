@@ -2,10 +2,18 @@ extends Node
 
 const SOUND_SHOT = "shot"
 const SOUND_SWITCH = "switch"
+const SOUND_NEW_MONSTER = "new monster"
+const SOUND_LAUGH = "laugh"
+const SOUND_HEART = "heart"
+const SOUND_TRAIN = "train"
 
 var SOUNDS: Dictionary = {
 	SOUND_SHOT: preload("res://Assets/Sounds/shot.wav"),
-	SOUND_SWITCH: preload("res://Assets/Sounds/Switch.wav")
+	SOUND_SWITCH: preload("res://Assets/Sounds/Switch.wav"),
+	SOUND_NEW_MONSTER: preload("res://Assets/Sounds/new_monster.mp3") ,
+	SOUND_LAUGH: preload("res://Assets/Sounds/laugh.mp3"),
+	SOUND_HEART: preload("res://Assets/Sounds/coracao batendo.mp3"),
+	SOUND_TRAIN: preload("res://Assets/Sounds/trem.mp3")
 }
 
 

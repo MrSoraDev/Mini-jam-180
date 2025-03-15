@@ -29,6 +29,7 @@ gdscript/warnings/unused_signal=0
 
 folder_colors={
 "res://Assets/": "red",
+"res://Assets/Sounds/": "orange",
 "res://Game/": "green"
 }
 

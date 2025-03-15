@@ -1,31 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciwpg8154rlsl"]
+[gd_scene load_steps=17 format=3 uid="uid://ciwpg8154rlsl"]
 
 [ext_resource type="PackedScene" uid="uid://cif7m3pxtn1uh" path="res://Game/Scenes/HUD/hud.tscn" id="1_acdbk"]
 [ext_resource type="Script" path="res://Game/Scenes/vagao/vagao_1.gd" id="1_fd0x1"]
-[ext_resource type="Texture2D" uid="uid://bwv4yuqbdxtj3" path="res://Assets/trains_trages.png" id="2_a2pod"]
 [ext_resource type="Texture2D" uid="uid://b0r8wntparerd" path="res://Assets/Monsters/inimigoexemplo.png" id="3_d6cbl"]
+[ext_resource type="Texture2D" uid="uid://b7r03it0ifang" path="res://Assets/base_train_maior/base_train_maior.png" id="3_p1gqg"]
+[ext_resource type="Shader" path="res://Game/Scenes/vagao/vagao_1.gdshader" id="4_sf41v"]
+[ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="5_k2kss"]
 
 [sub_resource type="Animation" id="Animation_daue7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("BlinkCanvas/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlinkCanvas/ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -37,30 +27,45 @@ resource_name = "blinkfast"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("BlinkCanvas/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlinkCanvas/ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_frame"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_upvdq"]
 resource_name = "blinkin"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlinkCanvas/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_7egod"]
 resource_name = "blinkout"
@@ -73,6 +78,88 @@ _data = {
 "blinkout": SubResource("Animation_7egod")
 }
 
+[sub_resource type="Animation" id="Animation_jhteq"]
+resource_name = "train"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyLayer/Level:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.8, 2.03333, 2.36667, 2.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(579, 323), Vector2(567, 335), Vector2(567, 311), Vector2(575, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.8, 2.03333, 2.36667, 2.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(575, 327), Vector2(563, 339), Vector2(563, 315), Vector2(575, 327)]
+}
+
+[sub_resource type="Animation" id="Animation_jeyse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyLayer/Level:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 323)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 327)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5ii5"]
+_data = {
+"RESET": SubResource("Animation_jeyse"),
+"train": SubResource("Animation_jhteq")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dorfb"]
+shader = ExtResource("4_sf41v")
+shader_parameter/color = null
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = true
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(5, 1)
+shader_parameter/scroll_noise_tex = false
+shader_parameter/noise_scroll_direction = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjl21"]
+shader = ExtResource("4_sf41v")
+shader_parameter/color = null
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = true
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(-5, 1)
+shader_parameter/scroll_noise_tex = false
+shader_parameter/noise_scroll_direction = Vector2(1, 0)
+
 [node name="Vagao1" type="Node2D"]
 script = ExtResource("1_fd0x1")
 
@@ -80,6 +167,12 @@ script = ExtResource("1_fd0x1")
 libraries = {
 "": SubResource("AnimationLibrary_fdnhn")
 }
+
+[node name="TrainMoving" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h5ii5")
+}
+autoplay = "train"
 
 [node name="FirstPhase" type="Timer" parent="."]
 wait_time = 2.0
@@ -98,13 +191,8 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="HUD" parent="." instance=ExtResource("1_acdbk")]
-layer = 3
-
-[node name="PointLight2D" parent="HUD" index="3"]
-position = Vector2(607, 470)
-
 [node name="BlinkCanvas" type="CanvasLayer" parent="."]
+layer = 4
 
 [node name="ColorRect" type="ColorRect" parent="BlinkCanvas"]
 anchors_preset = 15
@@ -114,14 +202,38 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
+[node name="HUD" parent="." instance=ExtResource("1_acdbk")]
+layer = 3
+
+[node name="PointLight2D" parent="HUD" index="3"]
+position = Vector2(607, 470)
+
 [node name="EnemyLayer" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="Level" type="Sprite2D" parent="EnemyLayer"]
 position = Vector2(579, 323)
 scale = Vector2(4, 4)
-texture = ExtResource("2_a2pod")
-hframes = 3
+texture = ExtResource("3_p1gqg")
+hframes = 2
+
+[node name="Fog" type="Sprite2D" parent="EnemyLayer"]
+light_mask = 0
+visibility_layer = 2
+z_index = -2
+material = SubResource("ShaderMaterial_dorfb")
+position = Vector2(876, 323)
+scale = Vector2(4.26562, 5.04688)
+texture = ExtResource("5_k2kss")
+
+[node name="Fog2" type="Sprite2D" parent="EnemyLayer"]
+light_mask = 0
+visibility_layer = 2
+z_index = -2
+material = SubResource("ShaderMaterial_gjl21")
+position = Vector2(296, 323)
+scale = Vector2(4.60937, 5.04688)
+texture = ExtResource("5_k2kss")
 
 [node name="Enemy" type="Sprite2D" parent="."]
 light_mask = 4
@@ -138,6 +250,12 @@ visibility_layer = 4
 position = Vector2(597, 402)
 blend_mode = 1
 range_item_cull_mask = 4
+
+[node name="Train" type="AudioStreamPlayer" parent="."]
+volume_db = -11.243
+
+[node name="Effects" type="AudioStreamPlayer" parent="."]
+volume_db = -7.525
 
 [connection signal="timeout" from="FirstPhase" to="." method="_on_first_phase_timeout"]
 [connection signal="timeout" from="SecondPhase" to="." method="_on_second_phase_timeout"]

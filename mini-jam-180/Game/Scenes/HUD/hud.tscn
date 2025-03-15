@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cif7m3pxtn1uh"]
+[gd_scene load_steps=23 format=3 uid="uid://cif7m3pxtn1uh"]
 
 [ext_resource type="Script" path="res://Game/Scenes/HUD/hud.gd" id="1_cwkfp"]
 [ext_resource type="Texture2D" uid="uid://cnko3o311barx" path="res://Assets/fun.png" id="2_8qpwj"]
 [ext_resource type="Texture2D" uid="uid://blb4kx0dqckav" path="res://Assets/lanterna.png" id="3_l83wm"]
+[ext_resource type="Shader" path="res://Game/Scenes/HUD/hud2.gdshader" id="4_4llvx"]
+[ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="5_kxltw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xkv3"]
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
@@ -97,22 +99,6 @@ fill = 1
 fill_from = Vector2(0.490826, 0.46789)
 fill_to = Vector2(0.866973, 0.146216)
 
-[sub_resource type="Animation" id="Animation_vnype"]
-resource_name = "oscilation"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.992157), Color(1, 1, 1, 0.917647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0.8)]
-}
-
 [sub_resource type="Animation" id="Animation_3want"]
 length = 0.001
 tracks/0/type = "value"
@@ -128,11 +114,32 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0.992157)]
 }
 
+[sub_resource type="Animation" id="Animation_vnype"]
+resource_name = "oscilation"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.992157), Color(1, 1, 1, 0.917647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0.8)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3joh"]
 _data = {
 "RESET": SubResource("Animation_3want"),
 "oscilation": SubResource("Animation_vnype")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpugy"]
+shader = ExtResource("4_4llvx")
+shader_parameter/noise_intensity = 0.181
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_cwkfp")
@@ -197,5 +204,11 @@ libraries = {
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.362829, 0.362829, 0.362829, 1)
 blend_mode = 1
+
+[node name="Noise" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hpugy")
+position = Vector2(577, 323)
+scale = Vector2(8.98438, 5)
+texture = ExtResource("5_kxltw")
 
 [connection signal="timeout" from="LanternTimer" to="." method="_on_lantern_timer_timeout"]
