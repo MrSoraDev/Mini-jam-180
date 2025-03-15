@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Mini Jam 180"
+config/name="Midnight Train"
+run/main_scene="res://Game/Scenes/vagao/vagao_1.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,11 +21,28 @@ GameManager="*res://Game/Singletons/GameManager.gd"
 SceneManager="*res://Game/Singletons/SceneManager.gd"
 SignalManager="*res://Game/Singletons/SignalManager.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [file_customization]
 
 folder_colors={
 "res://Assets/": "red",
 "res://Game/": "green"
+}
+
+[input]
+
+shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(146, 11),"global_position":Vector2(155, 57),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+lantern={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(191, 23),"global_position":Vector2(200, 69),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
 }
 
 [rendering]

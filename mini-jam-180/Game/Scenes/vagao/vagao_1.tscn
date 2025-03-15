@@ -1,9 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciwpg8154rlsl"]
+[gd_scene load_steps=10 format=3 uid="uid://ciwpg8154rlsl"]
 
 [ext_resource type="PackedScene" uid="uid://cif7m3pxtn1uh" path="res://Game/Scenes/HUD/hud.tscn" id="1_acdbk"]
+[ext_resource type="Script" path="res://Game/Scenes/vagao/vagao_1.gd" id="1_fd0x1"]
+[ext_resource type="Texture2D" uid="uid://bwv4yuqbdxtj3" path="res://Assets/trains_trages.png" id="2_a2pod"]
+[ext_resource type="Texture2D" uid="uid://b0r8wntparerd" path="res://Assets/Monsters/inimigoexemplo.png" id="3_d6cbl"]
+
+[sub_resource type="Animation" id="Animation_daue7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlinkCanvas/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_imei6"]
 resource_name = "blinkfast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlinkCanvas/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_upvdq"]
 resource_name = "blinkin"
@@ -13,16 +67,81 @@ resource_name = "blinkout"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fdnhn"]
 _data = {
+"RESET": SubResource("Animation_daue7"),
 "blinkfast": SubResource("Animation_imei6"),
 "blinkin": SubResource("Animation_upvdq"),
 "blinkout": SubResource("Animation_7egod")
 }
 
 [node name="Vagao1" type="Node2D"]
-
-[node name="HUD" parent="." instance=ExtResource("1_acdbk")]
+script = ExtResource("1_fd0x1")
 
 [node name="Blink" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fdnhn")
 }
+
+[node name="FirstPhase" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="SecondPhase" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ThirdPhase" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="FourthPhase" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("1_acdbk")]
+layer = 3
+
+[node name="PointLight2D" parent="HUD" index="3"]
+position = Vector2(607, 470)
+
+[node name="BlinkCanvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="BlinkCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="EnemyLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Level" type="Sprite2D" parent="EnemyLayer"]
+position = Vector2(579, 323)
+scale = Vector2(4, 4)
+texture = ExtResource("2_a2pod")
+hframes = 3
+
+[node name="Enemy" type="Sprite2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+z_index = 3
+position = Vector2(575, 327)
+scale = Vector2(4, 4)
+texture = ExtResource("3_d6cbl")
+hframes = 4
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(597, 402)
+blend_mode = 1
+range_item_cull_mask = 4
+
+[connection signal="timeout" from="FirstPhase" to="." method="_on_first_phase_timeout"]
+[connection signal="timeout" from="SecondPhase" to="." method="_on_second_phase_timeout"]
+[connection signal="timeout" from="ThirdPhase" to="." method="_on_third_phase_timeout"]
+[connection signal="timeout" from="FourthPhase" to="." method="_on_fourth_phase_timeout"]
+
+[editable path="HUD"]

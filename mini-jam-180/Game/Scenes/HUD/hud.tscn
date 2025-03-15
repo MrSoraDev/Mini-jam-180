@@ -1,4 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cif7m3pxtn1uh"]
+[gd_scene load_steps=20 format=3 uid="uid://cif7m3pxtn1uh"]
+
+[ext_resource type="Script" path="res://Game/Scenes/HUD/hud.gd" id="1_cwkfp"]
+[ext_resource type="Texture2D" uid="uid://cnko3o311barx" path="res://Assets/fun.png" id="2_8qpwj"]
+[ext_resource type="Texture2D" uid="uid://blb4kx0dqckav" path="res://Assets/lanterna.png" id="3_l83wm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xkv3"]
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
@@ -6,7 +10,132 @@ bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r6yo"]
 bg_color = Color(0.743349, 0.0675799, 6.73831e-07, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aevih"]
+atlas = ExtResource("2_8qpwj")
+region = Rect2(0, 0, 288, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ulux"]
+atlas = ExtResource("2_8qpwj")
+region = Rect2(0, 0, 288, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt8iq"]
+atlas = ExtResource("2_8qpwj")
+region = Rect2(288, 0, 288, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmifu"]
+atlas = ExtResource("2_8qpwj")
+region = Rect2(576, 0, 288, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42csd"]
+atlas = ExtResource("2_8qpwj")
+region = Rect2(0, 0, 288, 162)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iiqdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aevih")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ulux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt8iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmifu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42csd")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh7jt"]
+atlas = ExtResource("3_l83wm")
+region = Rect2(0, 0, 288, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2qsx"]
+atlas = ExtResource("3_l83wm")
+region = Rect2(288, 0, 288, 162)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcvmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh7jt")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2qsx")
+}],
+"loop": false,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_6d0jj"]
+offsets = PackedFloat32Array(0.0194805, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57fcf"]
+gradient = SubResource("Gradient_6d0jj")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.490826, 0.46789)
+fill_to = Vector2(0.866973, 0.146216)
+
+[sub_resource type="Animation" id="Animation_vnype"]
+resource_name = "oscilation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.992157), Color(1, 1, 1, 0.917647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.901961), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_3want"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.992157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n3joh"]
+_data = {
+"RESET": SubResource("Animation_3want"),
+"oscilation": SubResource("Animation_vnype")
+}
+
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_cwkfp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -28,3 +157,45 @@ theme_override_styles/background = SubResource("StyleBoxFlat_4xkv3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6r6yo")
 fill_mode = 2
 show_percentage = false
+
+[node name="Gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_iiqdm")
+animation = &"shoot"
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="Lantern" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 324)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_xcvmt")
+animation = &"off"
+autoplay = "off"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-92, 89)
+scale = Vector2(1.32, 1.32)
+color = Color(1, 1, 1, 0.992157)
+range_item_cull_mask = 4
+texture = SubResource("GradientTexture2D_57fcf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioLantern" type="AudioStreamPlayer" parent="."]
+
+[node name="LanternTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n3joh")
+}
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.362829, 0.362829, 0.362829, 1)
+blend_mode = 1
+
+[connection signal="timeout" from="LanternTimer" to="." method="_on_lantern_timer_timeout"]
