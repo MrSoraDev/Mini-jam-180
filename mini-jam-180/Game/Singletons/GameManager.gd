@@ -6,6 +6,7 @@ const SOUND_NEW_MONSTER = "new monster"
 const SOUND_LAUGH = "laugh"
 const SOUND_HEART = "heart"
 const SOUND_TRAIN = "train"
+const SOUND_BITE = "bite"
 
 var SOUNDS: Dictionary = {
 	SOUND_SHOT: preload("res://Assets/Sounds/shot.wav"),
@@ -13,7 +14,8 @@ var SOUNDS: Dictionary = {
 	SOUND_NEW_MONSTER: preload("res://Assets/Sounds/new_monster.mp3") ,
 	SOUND_LAUGH: preload("res://Assets/Sounds/laugh.mp3"),
 	SOUND_HEART: preload("res://Assets/Sounds/coracao batendo.mp3"),
-	SOUND_TRAIN: preload("res://Assets/Sounds/trem.mp3")
+	SOUND_TRAIN: preload("res://Assets/Sounds/trem.mp3"),
+	SOUND_BITE: preload("res://Assets/Sounds/bite.wav"),
 }
 
 

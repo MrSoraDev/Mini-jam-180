@@ -11,7 +11,7 @@ extends CanvasLayer
 
 var can_shoot: bool = false
 var can_lantern: bool = false
-var madness_drain_speed = [0.1,2,5]
+var madness_drain_speed = [0.01,0.02,0.05]
 var initial_madness : float #é o nivel de madness qnd começou a fase, pq se o player nao atirar no player, volta pra esse nivel
 var step = madness_drain_speed[0]
 var light_position:Vector2 = Vector2.ZERO

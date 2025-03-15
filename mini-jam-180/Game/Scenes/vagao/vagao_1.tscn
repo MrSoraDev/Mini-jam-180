@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ciwpg8154rlsl"]
+[gd_scene load_steps=23 format=3 uid="uid://ciwpg8154rlsl"]
 
 [ext_resource type="PackedScene" uid="uid://cif7m3pxtn1uh" path="res://Game/Scenes/HUD/hud.tscn" id="1_acdbk"]
 [ext_resource type="Script" path="res://Game/Scenes/vagao/vagao_1.gd" id="1_fd0x1"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b7r03it0ifang" path="res://Assets/base_train_maior/base_train_maior.png" id="3_p1gqg"]
 [ext_resource type="Shader" path="res://Game/Scenes/vagao/vagao_1.gdshader" id="4_sf41v"]
 [ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="5_k2kss"]
+[ext_resource type="Shader" path="res://Game/Scenes/vagao/enemy.gdshader" id="6_lfuat"]
+[ext_resource type="Script" path="res://Game/Scenes/vagao/enemy.gd" id="8_rljdy"]
 
 [sub_resource type="Animation" id="Animation_daue7"]
 length = 0.001
@@ -140,6 +142,28 @@ _data = {
 "train": SubResource("Animation_jhteq")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jube"]
+atlas = ExtResource("3_p1gqg")
+region = Rect2(0, 0, 338, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7354"]
+atlas = ExtResource("3_p1gqg")
+region = Rect2(338, 0, 338, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eiilb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jube")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7354")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dorfb"]
 shader = ExtResource("4_sf41v")
 shader_parameter/color = null
@@ -159,6 +183,11 @@ shader_parameter/pixelation_amount = 150
 shader_parameter/fog_direction = Vector2(-5, 1)
 shader_parameter/scroll_noise_tex = false
 shader_parameter/noise_scroll_direction = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdqe1"]
+shader = ExtResource("6_lfuat")
+shader_parameter/progress = 0.0
+shader_parameter/meltiness = 1.0
 
 [node name="Vagao1" type="Node2D"]
 script = ExtResource("1_fd0x1")
@@ -211,11 +240,13 @@ position = Vector2(607, 470)
 [node name="EnemyLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Level" type="Sprite2D" parent="EnemyLayer"]
+[node name="Level" type="AnimatedSprite2D" parent="EnemyLayer"]
+visible = false
 position = Vector2(579, 323)
 scale = Vector2(4, 4)
-texture = ExtResource("3_p1gqg")
-hframes = 2
+sprite_frames = SubResource("SpriteFrames_eiilb")
+autoplay = "default"
+frame_progress = 0.519947
 
 [node name="Fog" type="Sprite2D" parent="EnemyLayer"]
 light_mask = 0
@@ -239,10 +270,12 @@ texture = ExtResource("5_k2kss")
 light_mask = 4
 visibility_layer = 4
 z_index = 3
+material = SubResource("ShaderMaterial_rdqe1")
 position = Vector2(575, 327)
 scale = Vector2(4, 4)
 texture = ExtResource("3_d6cbl")
 hframes = 4
+script = ExtResource("8_rljdy")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 light_mask = 4
