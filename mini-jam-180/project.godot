@@ -29,6 +29,7 @@ gdscript/warnings/unused_signal=0
 
 folder_colors={
 "res://Assets/": "red",
+"res://Assets/Fonts/": "yellow",
 "res://Assets/Sounds/": "orange",
 "res://Game/": "green"
 }
@@ -48,4 +49,5 @@ lantern={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var audio_lantern: AudioStreamPlayer = $AudioLantern
 @onready var lantern_timer: Timer = $LanternTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var heart: AudioStreamPlayer = $Heart
 
 var can_shoot: bool = false
 var can_lantern: bool = false
@@ -15,7 +16,7 @@ var madness_drain_speed = [0.01,0.02,0.05]
 var initial_madness : float #é o nivel de madness qnd começou a fase, pq se o player nao atirar no player, volta pra esse nivel
 var step = madness_drain_speed[0]
 var light_position:Vector2 = Vector2.ZERO
-
+var is_monster: bool = true
 
 func _ready() -> void:
 	SignalManager.save_madness.connect(save_madness)
@@ -25,7 +26,7 @@ func _ready() -> void:
 	SignalManager.change_lantern_position.connect(change_light_position)
 	SignalManager.reset.connect(blinked)
 	SignalManager.on_death.connect(death)
-	
+	SignalManager.monster.connect(monster)
 	point_light_2d.global_position = Vector2(-59,52)
 	initial_madness = GameManager.get_actual_madness()
 	progress_bar.value = initial_madness
@@ -44,6 +45,10 @@ func _process(delta: float) -> void:
 		gun.play("shoot")
 		can_shoot = false
 		GameManager.play_clip(audio_stream_player,GameManager.SOUND_SHOT)
+		
+
+		if is_monster == true:
+			SignalManager.on_monster_death.emit()
 	if Input.is_action_pressed("lantern") and can_lantern == true:
 		turn_lantern()
 
@@ -89,3 +94,6 @@ func _on_lantern_timer_timeout() -> void:
 func death() -> void:
 	can_lantern = false
 	can_shoot = false
+
+func monster(bool_monster) -> void:
+	is_monster = bool_monster

@@ -211,4 +211,6 @@ position = Vector2(577, 323)
 scale = Vector2(8.98438, 5)
 texture = ExtResource("5_kxltw")
 
+[node name="Heart" type="AudioStreamPlayer" parent="."]
+
 [connection signal="timeout" from="LanternTimer" to="." method="_on_lantern_timer_timeout"]
