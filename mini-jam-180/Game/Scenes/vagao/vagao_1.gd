@@ -16,9 +16,8 @@ var can_shoot: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.play_clip(train,GameManager.SOUND_TRAIN)
-	GameManager.play_clip(effects,GameManager.SOUND_NEW_MONSTER)
-	SignalManager.monster.emit(monster)
-	blink.play("RESET")
+	SignalManager.monster.emit(monster) #se é monstro ou nao
+	#blink.play("RESET")
 	#innocent.hide()
 	labels = $BlinkCanvas/Node2D.get_children()
 	for label in labels:
@@ -33,8 +32,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("shoot"):
 		if monster and can_shoot:
+			can_shoot = false
 			stop_timers() #para os timers mas o sinal se é monstro ja foi enviado
 		elif monster == false and can_shoot:
+			can_shoot = false
 			human_shot()
 			
 
@@ -48,8 +49,9 @@ func human_shot():
 	innocent.play("innocent")
 	await get_tree().create_timer(2).timeout
 	blink.play("blinkout")
+	SceneManager.change_scene("vagao3")
 
-func _on_first_phase_timeout() -> void:
+func _on_first_phase_timeout() -> void: #libera atirar e usar a lanterna
 	blinking()
 	#enemy.scale = Vector2(4.5,4.5)
 	
@@ -93,6 +95,11 @@ func stop_timers() -> void:
 	$ThirdPhase.stop()
 	$FourthPhase.stop()
 
+func play_steps() -> void:
+	GameManager.play_clip(effects,GameManager.SOUND_STEPS)
+	await get_tree().create_timer(3).timeout
+	GameManager.play_clip(effects,GameManager.SOUND_NEW_MONSTER)
+	
 #func laugh():
 	#GameManager.play_clip(effects,GameManager.SOUND_LAUGH)
 	#

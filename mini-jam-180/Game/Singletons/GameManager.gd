@@ -7,6 +7,7 @@ const SOUND_LAUGH = "laugh"
 const SOUND_HEART = "heart"
 const SOUND_TRAIN = "train"
 const SOUND_BITE = "bite"
+const SOUND_STEPS = "step"
 
 var SOUNDS: Dictionary = {
 	SOUND_SHOT: preload("res://Assets/Sounds/shot.wav"),
@@ -16,6 +17,7 @@ var SOUNDS: Dictionary = {
 	SOUND_HEART: preload("res://Assets/Sounds/coracao batendo.mp3"),
 	SOUND_TRAIN: preload("res://Assets/Sounds/trem.mp3"),
 	SOUND_BITE: preload("res://Assets/Sounds/bite.wav"),
+	SOUND_STEPS: preload("res://Assets/Sounds/steps.wav")
 }
 
 

@@ -5,7 +5,7 @@
 
 [node name="Vagao3" instance=ExtResource("1_a64y1")]
 
-[node name="Enemy" parent="." index="9"]
+[node name="Enemy" parent="." index="10"]
 texture = ExtResource("2_faqsh")
 
 [editable path="HUD"]

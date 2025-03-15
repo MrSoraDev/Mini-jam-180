@@ -1,12 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://ciwpg8154rlsl"]
+[gd_scene load_steps=32 format=3 uid="uid://ciwpg8154rlsl"]
 
 [ext_resource type="PackedScene" uid="uid://cif7m3pxtn1uh" path="res://Game/Scenes/HUD/hud.tscn" id="1_acdbk"]
 [ext_resource type="Script" path="res://Game/Scenes/vagao/vagao_1.gd" id="1_fd0x1"]
-[ext_resource type="FontFile" uid="uid://u5dpo3pqui50" path="res://Assets/Fonts/Blood Thirst.ttf" id="2_4r20u"]
+[ext_resource type="FontFile" uid="uid://b5bo8ullpnvk8" path="res://Assets/Fonts/Alkhemikal.ttf" id="2_f0xky"]
 [ext_resource type="Texture2D" uid="uid://b0r8wntparerd" path="res://Assets/Monsters/inimigoexemplo.png" id="3_d6cbl"]
-[ext_resource type="FontFile" uid="uid://cyr21qaidghoj" path="res://Assets/Fonts/Bonechiller Free.ttf" id="3_lkskf"]
 [ext_resource type="Texture2D" uid="uid://b7r03it0ifang" path="res://Assets/base_train_maior/base_train_maior.png" id="3_p1gqg"]
-[ext_resource type="FontFile" uid="uid://cc6daq650eksx" path="res://Assets/Fonts/pack of wolves.ttf" id="4_gukms"]
 [ext_resource type="Shader" path="res://Game/Scenes/vagao/vagao_1.gdshader" id="4_sf41v"]
 [ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="5_k2kss"]
 [ext_resource type="Shader" path="res://Game/Scenes/vagao/enemy.gdshader" id="6_lfuat"]
@@ -74,6 +72,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_7egod"]
 resource_name = "blinkout"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -81,10 +80,38 @@ tracks/0/path = NodePath("BlinkCanvas/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FirstPhase")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_steps"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_o0kpw"]
@@ -110,6 +137,33 @@ _data = {
 "blinkin": SubResource("Animation_upvdq"),
 "blinkout": SubResource("Animation_7egod"),
 "shot_human": SubResource("Animation_o0kpw")
+}
+
+[sub_resource type="Animation" id="Animation_jeyse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyLayer/Level:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 323)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 327)]
 }
 
 [sub_resource type="Animation" id="Animation_jhteq"]
@@ -141,37 +195,109 @@ tracks/1/keys = {
 "values": [Vector2(575, 327), Vector2(563, 339), Vector2(563, 315), Vector2(575, 327)]
 }
 
-[sub_resource type="Animation" id="Animation_jeyse"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5ii5"]
+_data = {
+"RESET": SubResource("Animation_jeyse"),
+"train": SubResource("Animation_jhteq")
+}
+
+[sub_resource type="Animation" id="Animation_h0j3c"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyLayer/Level:position")
+tracks/0/path = NodePath("BlinkCanvas/Node2D/InnocentFirst:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(579, 323)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Enemy:position")
+tracks/1/path = NodePath("BlinkCanvas/Node2D/InnocentSecond:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(575, 327)]
+"values": [Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5ii5"]
-_data = {
-"RESET": SubResource("Animation_jeyse"),
-"train": SubResource("Animation_jhteq")
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlinkCanvas/Node2D/InnocentThirth:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlinkCanvas/Node2D/InnocentFirst2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlinkCanvas/Node2D/InnocentSecond2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlinkCanvas/Node2D/InnocentThirth2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlinkCanvas/Node2D/InnocentFirst3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlinkCanvas/Node2D/InnocentFirst3:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_q2s1t"]
@@ -275,105 +401,6 @@ tracks/7/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_h0j3c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlinkCanvas/Node2D/InnocentFirst:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlinkCanvas/Node2D/InnocentSecond:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BlinkCanvas/Node2D/InnocentThirth:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlinkCanvas/Node2D/InnocentFirst2:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BlinkCanvas/Node2D/InnocentSecond2:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BlinkCanvas/Node2D/InnocentThirth2:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BlinkCanvas/Node2D/InnocentFirst3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BlinkCanvas/Node2D/InnocentFirst3:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t14gg"]
 _data = {
 "RESET": SubResource("Animation_h0j3c"),
@@ -381,22 +408,22 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_wusao"]
-font = ExtResource("2_4r20u")
+font = ExtResource("2_f0xky")
 font_size = 24
 font_color = Color(0.878431, 0, 0.0156863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nnjqu"]
-font = ExtResource("2_4r20u")
-font_size = 222
+font = ExtResource("2_f0xky")
+font_size = 350
 font_color = Color(0.878431, 0, 0.0156863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yigtr"]
-font = ExtResource("3_lkskf")
+font = ExtResource("2_f0xky")
 font_size = 24
 font_color = Color(0.878431, 0, 0.0156863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0jl1"]
-font = ExtResource("4_gukms")
+font = ExtResource("2_f0xky")
 font_size = 24
 font_color = Color(0.878431, 0, 0.0156863, 1)
 
@@ -455,6 +482,7 @@ monster = false
 libraries = {
 "": SubResource("AnimationLibrary_fdnhn")
 }
+autoplay = "blinkout"
 
 [node name="TrainMoving" type="AnimationPlayer" parent="."]
 libraries = {
@@ -470,7 +498,6 @@ libraries = {
 [node name="FirstPhase" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="SecondPhase" type="Timer" parent="."]
 wait_time = 5.0
@@ -518,13 +545,14 @@ label_settings = SubResource("LabelSettings_wusao")
 
 [node name="InnocentFirst3" type="Label" parent="BlinkCanvas/Node2D"]
 modulate = Color(1, 1, 1, 0)
-offset_left = 65.0
-offset_top = 213.0
-offset_right = 1091.0
-offset_bottom = 482.0
+offset_left = 37.0
+offset_top = 155.0
+offset_right = 1109.0
+offset_bottom = 506.0
 pivot_offset = Vector2(55, 15)
 text = "Innocent"
 label_settings = SubResource("LabelSettings_nnjqu")
+horizontal_alignment = 1
 
 [node name="InnocentSecond" type="Label" parent="BlinkCanvas/Node2D"]
 offset_left = 933.0
@@ -574,7 +602,6 @@ position = Vector2(607, 470)
 layer = -1
 
 [node name="Level" type="AnimatedSprite2D" parent="EnemyLayer"]
-visible = false
 position = Vector2(579, 323)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_eiilb")
