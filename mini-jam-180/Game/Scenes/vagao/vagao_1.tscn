@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ciwpg8154rlsl"]
+[gd_scene load_steps=46 format=3 uid="uid://ciwpg8154rlsl"]
 
 [ext_resource type="PackedScene" uid="uid://cif7m3pxtn1uh" path="res://Game/Scenes/HUD/hud.tscn" id="1_acdbk"]
 [ext_resource type="Script" path="res://Game/Scenes/vagao/vagao_1.gd" id="1_fd0x1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://Game/Scenes/vagao/vagao_1.gdshader" id="4_sf41v"]
 [ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="5_k2kss"]
 [ext_resource type="Shader" path="res://Game/Scenes/vagao/enemy.gdshader" id="6_lfuat"]
+[ext_resource type="Texture2D" uid="uid://dtcc7kxhoxcxk" path="res://Assets/blood/blood.png" id="8_4a6hi"]
 [ext_resource type="Script" path="res://Game/Scenes/vagao/enemy.gd" id="8_rljdy"]
 
 [sub_resource type="Animation" id="Animation_daue7"]
@@ -745,6 +746,24 @@ position = Vector2(296, 323)
 scale = Vector2(4.60937, 5.04688)
 texture = ExtResource("5_k2kss")
 
+[node name="Blood" type="Node2D" parent="EnemyLayer"]
+
+[node name="Blood2" type="Sprite2D" parent="EnemyLayer/Blood"]
+position = Vector2(-211, 321)
+texture = ExtResource("8_4a6hi")
+
+[node name="Blood3" type="Sprite2D" parent="EnemyLayer/Blood"]
+position = Vector2(-179, 214)
+texture = ExtResource("8_4a6hi")
+
+[node name="Blood" type="Sprite2D" parent="EnemyLayer/Blood"]
+position = Vector2(-67, 268)
+texture = ExtResource("8_4a6hi")
+
+[node name="Blood4" type="Sprite2D" parent="EnemyLayer/Blood"]
+position = Vector2(-166, 434)
+texture = ExtResource("8_4a6hi")
+
 [node name="Enemy" type="Sprite2D" parent="."]
 light_mask = 4
 visibility_layer = 4
@@ -769,7 +788,7 @@ volume_db = -11.243
 [node name="Effects" type="AudioStreamPlayer" parent="."]
 volume_db = -7.525
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="MonsterSounds" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="FirstPhase" to="." method="_on_first_phase_timeout"]
 [connection signal="timeout" from="SecondPhase" to="." method="_on_second_phase_timeout"]

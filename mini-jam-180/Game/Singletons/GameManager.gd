@@ -20,6 +20,24 @@ var SOUNDS: Dictionary = {
 	SOUND_STEPS: preload("res://Assets/Sounds/steps.wav")
 }
 
+var MONSTER_SOUNDS: Dictionary = {
+	1 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 1.wav"),
+	2 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 3.wav"), 
+	3 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 5.wav"), 
+	4 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 8.wav"), 
+	5 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 10.wav"), 
+	6 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 11.wav"), 
+	7 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 12.wav"), 
+	8 : preload("res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 13.wav")
+}
+
+var MONSTER_SCREAM: Dictionary = {
+	"0": preload("res://Assets/Sounds/monster_scream1.wav"),
+	"1": preload("res://Assets/Sounds/monster_scream2.wav"),
+	"2": preload("res://Assets/Sounds/monster_scream3.wav"),
+	"3": preload("res://Assets/Sounds/monster_scream4.wav"),
+	"4": preload("res://Assets/Sounds/final_monster_scream.wav")
+}
 
 var actual_madness: float = 0
 
@@ -44,4 +62,8 @@ func play_clip(player: AudioStreamPlayer, clip_key: String) -> void:
 	if SOUNDS.has(clip_key) == false:
 		return
 	player.stream = SOUNDS[clip_key]
+	player.play()
+
+func play_scream(player: AudioStreamPlayer, clip_key: String) -> void:
+	player.stream = MONSTER_SCREAM[clip_key]
 	player.play()

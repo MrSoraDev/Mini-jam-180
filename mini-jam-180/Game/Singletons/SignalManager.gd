@@ -22,3 +22,5 @@ signal monster(monster:bool) #indica pra hud se é monster
 signal on_human_death()
 
 signal on_game_over()
+
+signal regen_madness()

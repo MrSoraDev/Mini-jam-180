@@ -36,6 +36,7 @@ func _ready() -> void:
 	SignalManager.reset.connect(blinked)
 	SignalManager.on_death.connect(death)
 	SignalManager.monster.connect(monster)
+	SignalManager.regen_madness.connect(regen_madness)
 	point_light_2d.global_position = Vector2(-59,52)
 	initial_madness = GameManager.get_actual_madness()
 	progress_bar.value = initial_madness
@@ -170,3 +171,6 @@ func game_over():
 	can_lantern = false
 	if is_game_over == true and Input.is_action_just_pressed("shoot"):
 		SceneManager.change_scene("main")
+
+func regen_madness():
+	progress_bar.value -= 10
