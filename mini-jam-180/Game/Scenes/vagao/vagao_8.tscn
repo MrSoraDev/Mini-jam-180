@@ -1,11 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://l6kxv1548u5i"]
+[gd_scene load_steps=7 format=3 uid="uid://l6kxv1548u5i"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_765rd"]
+[ext_resource type="Texture2D" uid="uid://dx45jb8rkkf5q" path="res://Assets/base_train_maior/vagao_cozinha.png" id="2_1xt5i"]
 [ext_resource type="Texture2D" uid="uid://bf5dtyy2gl1xn" path="res://Assets/Monsters/bambolas.png" id="2_gdxvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoq32"]
+atlas = ExtResource("2_1xt5i")
+region = Rect2(0, 0, 338, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry0ww"]
+atlas = ExtResource("2_1xt5i")
+region = Rect2(338, 0, 338, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogwf6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoq32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry0ww")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Vagao1" instance=ExtResource("1_765rd")]
 first_wagon = false
 monster = false
+
+[node name="Level" parent="EnemyLayer" index="0"]
+sprite_frames = SubResource("SpriteFrames_ogwf6")
+frame_progress = 0.0
+flip_v = true
 
 [node name="Enemy" parent="." index="10"]
 texture = ExtResource("2_gdxvd")

@@ -28,6 +28,7 @@ animations = [{
 
 [node name="Vagao1" instance=ExtResource("1_2ketj")]
 first_wagon = false
+monster = true
 
 [node name="Level" parent="EnemyLayer" index="0"]
 sprite_frames = SubResource("SpriteFrames_23nru")

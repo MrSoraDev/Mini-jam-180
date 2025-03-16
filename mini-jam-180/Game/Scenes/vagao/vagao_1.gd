@@ -15,6 +15,7 @@ extends Node2D
 
 
 @export var first_wagon: bool = false
+@export var last_wagon: bool = false
 @export var monster: bool = true
 
 var bloodpool
@@ -78,7 +79,8 @@ func monster_shot():
 	blood1.show()
 	blood2.show()
 	#endregion
-	GameManager.play_scream(monster_sounds,str(randi_range(0,3)))#grito do monstro
+	#GameManager.play_scream(monster_sounds,str(randi_range(0,3)))#grito do monstro
+	MusicPlayer.play_monster_sound(last_wagon)
 	enemy.hide()
 	#SignalManager.regen_madness.emit()
 	await get_tree().create_timer(0.5).timeout
@@ -154,6 +156,9 @@ func game_over():
 	await get_tree().create_timer(1).timeout
 	game_over_label.show()
 	game_over_fade.play("game_over_fade")
-	
+	await get_tree().create_timer(5).timeout
+	get_tree().change_scene_to_file("res://Game/Scenes/main_menu.tscn")
+
+
 func reset():
 	SignalManager.reset.emit()

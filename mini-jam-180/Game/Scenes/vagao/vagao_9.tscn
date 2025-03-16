@@ -1,9 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfya8cx0lafkf"]
+[gd_scene load_steps=6 format=3 uid="uid://bfya8cx0lafkf"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_ok4fo"]
+[ext_resource type="Texture2D" uid="uid://cf42ie05s2i5j" path="res://Assets/base_train_maior/sala_final.png" id="2_1uwwv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ci5p"]
+atlas = ExtResource("2_1uwwv")
+region = Rect2(0, 0, 338, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd40j"]
+atlas = ExtResource("2_1uwwv")
+region = Rect2(338, 0, 338, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ab77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ci5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd40j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Vagao1" instance=ExtResource("1_ok4fo")]
 first_wagon = false
 monster = false
+
+[node name="Level" parent="EnemyLayer" index="0"]
+sprite_frames = SubResource("SpriteFrames_4ab77")
+frame = 1
+frame_progress = 0.863459
 
 [editable path="HUD"]

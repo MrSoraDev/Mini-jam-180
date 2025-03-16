@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://di6qecnqtylr7"]
+[gd_scene load_steps=18 format=3 uid="uid://di6qecnqtylr7"]
 
 [ext_resource type="Script" path="res://Game/Scenes/last.gd" id="1_7tsjg"]
 [ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="2_4733i"]
 [ext_resource type="FontFile" uid="uid://b5bo8ullpnvk8" path="res://Assets/Fonts/Alkhemikal.ttf" id="3_irnkc"]
 [ext_resource type="AudioStream" uid="uid://cilak85r4l84u" path="res://Assets/Sounds/heavy_breath.wav" id="4_8uv8m"]
+[ext_resource type="Texture2D" uid="uid://d3k04byoji5y1" path="res://Assets/credits/soka_credito.png" id="5_4jn38"]
 [ext_resource type="LabelSettings" uid="uid://dbeey74di0mdm" path="res://credits.tres" id="5_qgl5n"]
+[ext_resource type="Texture2D" uid="uid://cqkuhs7q37g3x" path="res://Assets/credits/yrs_credito.png" id="7_3nglx"]
+[ext_resource type="Texture2D" uid="uid://doo0iln8q08h8" path="res://Assets/credits/yuki_credito.png" id="8_p4rhm"]
+[ext_resource type="Texture2D" uid="uid://78yrfpj1bgca" path="res://Assets/credits/musico_credito.png" id="9_e4f52"]
+[ext_resource type="Texture2D" uid="uid://tb8uh2ft0g4d" path="res://Assets/credits/zack_credito.png" id="10_83pvy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ni21p"]
 font = ExtResource("3_irnkc")
@@ -327,65 +332,69 @@ stream = ExtResource("4_8uv8m")
 [node name="Created By" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 480.0
+offset_left = 416.0
 offset_top = 320.0
-offset_right = 631.0
+offset_right = 785.0
 offset_bottom = 356.0
-text = "Created By"
+text = "Created By Boitata Tavern"
 label_settings = SubResource("LabelSettings_db7wi")
 
 [node name="Icon4" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(112, 544)
-texture = ExtResource("2_4733i")
+position = Vector2(136, 520)
+scale = Vector2(4, 4)
+texture = ExtResource("5_4jn38")
 
-[node name="Label" type="Label" parent="Icon4"]
-offset_left = -56.0
-offset_top = -136.0
-offset_right = 59.0
-offset_bottom = -85.0
+[node name="Label" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 408.0
+offset_right = 171.0
+offset_bottom = 459.0
 text = "Programmer:
   MrSoraDev"
 label_settings = ExtResource("5_qgl5n")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(360, 440)
-texture = ExtResource("2_4733i")
+position = Vector2(392, 440)
+scale = Vector2(4, 4)
+texture = ExtResource("7_3nglx")
 
-[node name="Label" type="Label" parent="Icon"]
-offset_left = -48.0
-offset_top = 80.0
-offset_right = 53.0
-offset_bottom = 131.0
+[node name="Label2" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 544.0
+offset_right = 405.0
+offset_bottom = 595.0
 text = "    Art:
 YrisGaming"
 label_settings = ExtResource("5_qgl5n")
 
 [node name="Icon2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(576, 536)
-texture = ExtResource("2_4733i")
+position = Vector2(608, 528)
+scale = Vector2(4, 4)
+texture = ExtResource("8_p4rhm")
 
-[node name="Label" type="Label" parent="Icon2"]
-offset_left = -24.0
-offset_top = -128.0
-offset_right = 17.0
-offset_bottom = -77.0
+[node name="Label3" type="Label" parent="."]
+offset_left = 568.0
+offset_top = 392.0
+offset_right = 609.0
+offset_bottom = 443.0
 text = " Art:
 Yuki"
 label_settings = ExtResource("5_qgl5n")
 
 [node name="Icon3" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(816, 440)
-texture = ExtResource("2_4733i")
+position = Vector2(824, 464)
+scale = Vector2(4, 4)
+texture = ExtResource("9_e4f52")
 
-[node name="Label" type="Label" parent="Icon3"]
-offset_left = -24.0
-offset_top = 88.0
-offset_right = 30.0
-offset_bottom = 137.0
+[node name="Label4" type="Label" parent="."]
+offset_left = 792.0
+offset_top = 544.0
+offset_right = 854.0
+offset_bottom = 595.0
 text = "Sound:
 Lunae"
 label_settings = ExtResource("5_qgl5n")
@@ -393,14 +402,15 @@ horizontal_alignment = 1
 
 [node name="Icon5" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1048, 528)
-texture = ExtResource("2_4733i")
+position = Vector2(1048, 504)
+scale = Vector2(4, 4)
+texture = ExtResource("10_83pvy")
 
-[node name="Label" type="Label" parent="Icon5"]
-offset_left = -56.0
-offset_top = -128.0
-offset_right = 45.0
-offset_bottom = -77.0
+[node name="Label5" type="Label" parent="."]
+offset_left = 992.0
+offset_top = 400.0
+offset_right = 1093.0
+offset_bottom = 451.0
 text = " Art Assist:
     Isacc"
 label_settings = ExtResource("5_qgl5n")

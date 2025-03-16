@@ -1,12 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://h3wq1wjiso0l"]
+[gd_scene load_steps=7 format=3 uid="uid://h3wq1wjiso0l"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_gaxvk"]
 [ext_resource type="Texture2D" uid="uid://cs6oqhlwo10m7" path="res://Assets/Monsters/inimigo_tartaruga.png" id="2_2d5i8"]
+[ext_resource type="Texture2D" uid="uid://dtiigcc5h57mj" path="res://Assets/base_train_maior/trem_buracio.png" id="2_3wfkc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g42fw"]
+atlas = ExtResource("2_3wfkc")
+region = Rect2(0, 0, 338, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04l4r"]
+atlas = ExtResource("2_3wfkc")
+region = Rect2(338, 0, 338, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svlat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g42fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04l4r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Vagao1" instance=ExtResource("1_gaxvk")]
 first_wagon = false
 
+[node name="DirectionalLight2D" parent="HUD" index="8"]
+position = Vector2(592, 296)
+
+[node name="Level" parent="EnemyLayer" index="0"]
+sprite_frames = SubResource("SpriteFrames_svlat")
+frame_progress = 0.0
+
 [node name="Enemy" parent="." index="10"]
 texture = ExtResource("2_2d5i8")
+
+[node name="DirectionalLight2D" parent="." index="11"]
+position = Vector2(608, 256)
 
 [editable path="HUD"]

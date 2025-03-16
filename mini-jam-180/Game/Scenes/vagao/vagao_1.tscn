@@ -721,6 +721,7 @@ sprite_frames = SubResource("SpriteFrames_7qtfy")
 animation = &"game_over"
 
 [node name="GameOverLabel" type="Label" parent="BlinkCanvas/GameOverAnimation"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -447.0
 offset_top = -106.0
@@ -755,8 +756,8 @@ light_mask = 0
 visibility_layer = 2
 z_index = -2
 material = SubResource("ShaderMaterial_dorfb")
-position = Vector2(876, 323)
-scale = Vector2(4.26562, 5.04688)
+position = Vector2(870.5, 323)
+scale = Vector2(4.35156, 5.04688)
 texture = ExtResource("5_k2kss")
 
 [node name="Fog2" type="Sprite2D" parent="EnemyLayer"]
@@ -764,8 +765,8 @@ light_mask = 0
 visibility_layer = 2
 z_index = -2
 material = SubResource("ShaderMaterial_gjl21")
-position = Vector2(296, 323)
-scale = Vector2(4.60937, 5.04688)
+position = Vector2(296.5, 323)
+scale = Vector2(4.61719, 5.04688)
 texture = ExtResource("5_k2kss")
 
 [node name="Blood" type="Node2D" parent="EnemyLayer"]
@@ -818,7 +819,6 @@ volume_db = -7.525
 
 [node name="FirstBreath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_gkmx7")
-volume_db = 10.0
 
 [connection signal="timeout" from="FirstPhase" to="." method="_on_first_phase_timeout"]
 [connection signal="timeout" from="SecondPhase" to="." method="_on_second_phase_timeout"]

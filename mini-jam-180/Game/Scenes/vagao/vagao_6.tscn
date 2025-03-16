@@ -1,25 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://do3u3xupusdd2"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_stiay"]
-[ext_resource type="Texture2D" uid="uid://b7r03it0ifang" path="res://Assets/base_train_maior/base_train_maior.png" id="2_ip0b3"]
+[ext_resource type="Texture2D" uid="uid://cvhuechxc5wm5" path="res://Assets/base_train_maior/vagão_lugar_sentar-Sheet.png" id="2_7o3nd"]
 [ext_resource type="Texture2D" uid="uid://bjrbk2f8pnpe3" path="res://Assets/Monsters/palhaço_humano.png" id="3_tam1i"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0aig"]
-atlas = ExtResource("2_ip0b3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0t5t"]
+atlas = ExtResource("2_7o3nd")
 region = Rect2(0, 0, 338, 212)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgluf"]
-atlas = ExtResource("2_ip0b3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqjve"]
+atlas = ExtResource("2_7o3nd")
 region = Rect2(338, 0, 338, 212)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_radpg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0aig")
+"texture": SubResource("AtlasTexture_w0t5t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sgluf")
+"texture": SubResource("AtlasTexture_cqjve")
 }],
 "loop": true,
 "name": &"default",
@@ -32,7 +32,7 @@ monster = false
 
 [node name="Level" parent="EnemyLayer" index="0"]
 sprite_frames = SubResource("SpriteFrames_radpg")
-frame_progress = 0.0
+frame_progress = 0.168896
 
 [node name="Enemy" parent="." index="10"]
 texture = ExtResource("3_tam1i")

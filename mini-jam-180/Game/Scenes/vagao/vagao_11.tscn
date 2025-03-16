@@ -1,25 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfwvhj4r702t4"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_jf7pp"]
-[ext_resource type="Texture2D" uid="uid://dtiigcc5h57mj" path="res://Assets/base_train_maior/trem_buracio.png" id="2_1o1my"]
 [ext_resource type="Texture2D" uid="uid://cr7a71xqu7i1l" path="res://Assets/Monsters/sergio_spritesheet.png" id="2_8hnso"]
+[ext_resource type="Texture2D" uid="uid://btlwi5uo6wkah" path="res://Assets/base_train_maior/vagao_buracao.png" id="2_oornt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4w48w"]
-atlas = ExtResource("2_1o1my")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0q12"]
+atlas = ExtResource("2_oornt")
 region = Rect2(0, 0, 338, 212)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5sdfv"]
-atlas = ExtResource("2_1o1my")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5dlt"]
+atlas = ExtResource("2_oornt")
 region = Rect2(338, 0, 338, 212)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d7u4r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4w48w")
+"texture": SubResource("AtlasTexture_q0q12")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5sdfv")
+"texture": SubResource("AtlasTexture_q5dlt")
 }],
 "loop": true,
 "name": &"default",
@@ -28,6 +28,8 @@ animations = [{
 
 [node name="Vagao1" instance=ExtResource("1_jf7pp")]
 first_wagon = false
+last_wagon = true
+monster = true
 
 [node name="Level" parent="EnemyLayer" index="0"]
 sprite_frames = SubResource("SpriteFrames_d7u4r")

@@ -24,3 +24,5 @@ volume_db = -30.0
 [node name="Music4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_i3tcq")
 volume_db = -30.0
+
+[node name="MonsterSound" type="AudioStreamPlayer" parent="."]

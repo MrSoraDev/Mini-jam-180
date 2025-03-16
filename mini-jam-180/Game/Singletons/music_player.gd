@@ -4,9 +4,19 @@ extends Node
 @onready var music_2: AudioStreamPlayer = $Music2
 @onready var music_3: AudioStreamPlayer = $Music3
 @onready var music_4: AudioStreamPlayer = $Music4
+@onready var monster_sound: AudioStreamPlayer = $MonsterSound
 
 var tween:Tween
 var tween2:Tween
+
+var MONSTER_SCREAM: Dictionary = {
+	"0": preload("res://Assets/Sounds/monster_scream1.wav"),
+	"1": preload("res://Assets/Sounds/monster_scream2.wav"),
+	"2": preload("res://Assets/Sounds/monster_scream3.wav"),
+	"3": preload("res://Assets/Sounds/monster_scream4.wav"),
+	"4": preload("res://Assets/Sounds/final_monster_scream.wav")
+}
+
 
 func _ready() -> void:
 	SignalManager.play_music.connect(music_play)
@@ -101,3 +111,11 @@ func music_play(sanity):
 			#print_debug("teste")
 		
 	#endregion
+
+func play_monster_sound(final:bool):
+	if final == false:
+		monster_sound.stream = MONSTER_SCREAM[str(randi_range(0,3))]
+		monster_sound.play()
+	else: 
+		monster_sound.stream = MONSTER_SCREAM["4"]
+		monster_sound.play()
