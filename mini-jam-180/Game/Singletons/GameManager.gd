@@ -67,3 +67,9 @@ func play_clip(player: AudioStreamPlayer, clip_key: String) -> void:
 func play_scream(player: AudioStreamPlayer, clip_key: String) -> void:
 	player.stream = MONSTER_SCREAM[clip_key]
 	player.play()
+
+func play_music(player: AudioStreamPlayer, _clip_key: String) -> void:
+	player.stream = preload("res://Assets/Sounds/Music/terror loop1.wav")
+	if player.playing == false:
+		player.play()
+	

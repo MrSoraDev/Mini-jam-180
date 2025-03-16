@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://10pq6sbwtjnf"]
+
+[ext_resource type="Script" path="res://Game/Singletons/music_player.gd" id="1_m41am"]
+[ext_resource type="AudioStream" uid="uid://oyiqwjcv64ff" path="res://Assets/Sounds/Music/terror loop1.wav" id="2_ldkat"]
+[ext_resource type="AudioStream" uid="uid://bfr8hfytudli1" path="res://Assets/Sounds/Music/terror loop2.wav" id="3_0okx5"]
+[ext_resource type="AudioStream" uid="uid://db7yuhme432jg" path="res://Assets/Sounds/Music/terror loop3.wav" id="4_lb3p0"]
+[ext_resource type="AudioStream" uid="uid://bi80q8wyhw55t" path="res://Assets/Sounds/Music/terror loop4_2.wav" id="5_i3tcq"]
+
+[node name="Music_Player" type="Node"]
+script = ExtResource("1_m41am")
+
+[node name="Music1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ldkat")
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0okx5")
+volume_db = -30.0
+
+[node name="Music3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lb3p0")
+volume_db = -30.0
+
+[node name="Music4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i3tcq")
+volume_db = -30.0

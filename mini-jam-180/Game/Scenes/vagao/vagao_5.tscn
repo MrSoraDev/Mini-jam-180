@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuj4jbvnxtyf3"]
+[gd_scene load_steps=3 format=3 uid="uid://cuj4jbvnxtyf3"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_vusfr"]
+[ext_resource type="Texture2D" uid="uid://dc6wn8rrlcoyf" path="res://Assets/Monsters/inimigo_chapeu_arrumado.png" id="2_l4r65"]
 
 [node name="Vagao1" instance=ExtResource("1_vusfr")]
+
+[node name="Enemy" parent="." index="10"]
+texture = ExtResource("2_l4r65")
 
 [editable path="HUD"]

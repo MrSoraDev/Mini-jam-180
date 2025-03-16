@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Midnight Train"
-run/main_scene="res://Game/Scenes/vagao/vagao_1.tscn"
+run/main_scene="res://Game/Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*res://Game/Singletons/GameManager.gd"
 SceneManager="*res://Game/Singletons/SceneManager.gd"
 SignalManager="*res://Game/Singletons/SignalManager.gd"
+MusicPlayer="*res://Game/Singletons/music_player.tscn"
 
 [debug]
 

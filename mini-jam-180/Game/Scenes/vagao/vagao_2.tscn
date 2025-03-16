@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4wh3ymvmcdyf"]
+[gd_scene load_steps=3 format=3 uid="uid://c4wh3ymvmcdyf"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_2ketj"]
+[ext_resource type="Texture2D" uid="uid://cxe6q12hob50l" path="res://Assets/Monsters/eye_enemy_arrumadio.png" id="2_md13t"]
 
 [node name="Vagao1" instance=ExtResource("1_2ketj")]
+
+[node name="Enemy" parent="." index="10"]
+texture = ExtResource("2_md13t")
 
 [editable path="HUD"]

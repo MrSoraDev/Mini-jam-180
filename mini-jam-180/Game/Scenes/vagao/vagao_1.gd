@@ -37,6 +37,8 @@ func _ready() -> void:
 	bloodpool = $EnemyLayer/Blood.get_children()
 	for blood in bloodpool:
 		blood.hide()
+		
+		
 func _process(delta: float) -> void:
 	#pass
 	if Input.is_action_pressed("lantern"):
@@ -64,7 +66,7 @@ func human_shot():
 	innocent.play("innocent")
 	await get_tree().create_timer(2).timeout
 	blink.play("blinkout")
-	SceneManager.change_scene("vagao3")
+	SceneManager.change_scene() #"vagao3"
 
 func monster_shot():
 	stop_timers() #para os timers mas o sinal se é monstro ja foi enviado
@@ -77,8 +79,8 @@ func monster_shot():
 	GameManager.play_scream(monster_sounds,str(randi_range(0,3)))
 	enemy.hide()
 	SignalManager.regen_madness.emit()
-	await get_tree().create_timer(2).timeout
-	SceneManager.change_scene("vagao3")
+	await get_tree().create_timer(0.2).timeout
+	SceneManager.change_scene()
 
 func _on_first_phase_timeout() -> void: #libera atirar e usar a lanterna
 	blinking()

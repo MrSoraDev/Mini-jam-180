@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://cif7m3pxtn1uh"]
+[gd_scene load_steps=28 format=3 uid="uid://cif7m3pxtn1uh"]
 
 [ext_resource type="Script" path="res://Game/Scenes/HUD/hud.gd" id="1_cwkfp"]
 [ext_resource type="Texture2D" uid="uid://g8bdeh0wv821" path="res://Assets/FUN_UPDATED.png" id="2_4xfsx"]
+[ext_resource type="Texture2D" uid="uid://biibrugxsjilf" path="res://Assets/Sanity/barra_vida.png" id="2_lquss"]
 [ext_resource type="Texture2D" uid="uid://yt0k6e32rhhr" path="res://Assets/lanterna2.png" id="3_gd1op"]
+[ext_resource type="Texture2D" uid="uid://b56ciplo2srga" path="res://Assets/Sanity/barravida_vaiza.png" id="3_twp0l"]
 [ext_resource type="Shader" path="res://Game/Scenes/HUD/hud2.gdshader" id="4_4llvx"]
 [ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="5_kxltw"]
 [ext_resource type="AudioStream" uid="uid://oyiqwjcv64ff" path="res://Assets/Sounds/Music/terror loop1.wav" id="6_rp1dn"]
@@ -162,6 +164,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6r6yo")
 fill_mode = 2
 show_percentage = false
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+fill_mode = 2
+texture_under = ExtResource("2_lquss")
+texture_progress = ExtResource("3_twp0l")
+
 [node name="Gun" type="AnimatedSprite2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(4, 4)
@@ -205,6 +215,7 @@ material = SubResource("ShaderMaterial_hpugy")
 position = Vector2(577, 323)
 scale = Vector2(8.98438, 5)
 texture = ExtResource("5_kxltw")
+metadata/_edit_lock_ = true
 
 [node name="Heart" type="AudioStreamPlayer" parent="."]
 

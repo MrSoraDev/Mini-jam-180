@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://do3u3xupusdd2"]
+[gd_scene load_steps=3 format=3 uid="uid://do3u3xupusdd2"]
 
 [ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_stiay"]
+[ext_resource type="Texture2D" uid="uid://csamea248sxj0" path="res://Assets/Monsters/marionette_inimigo.png" id="2_0toxi"]
 
 [node name="Vagao1" instance=ExtResource("1_stiay")]
+
+[node name="Enemy" parent="." index="10"]
+texture = ExtResource("2_0toxi")
 
 [editable path="HUD"]

@@ -24,3 +24,5 @@ signal on_human_death()
 signal on_game_over()
 
 signal regen_madness()
+
+signal play_music(sanity)

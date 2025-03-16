@@ -1,4 +1,22 @@
-[gd_scene format=3 uid="uid://b1fe57kypyoxm"]
+[gd_scene load_steps=9 format=3 uid="uid://b1fe57kypyoxm"]
+
+[ext_resource type="Script" path="res://Game/Scenes/main_menu.gd" id="1_5n2x6"]
+[ext_resource type="Texture2D" uid="uid://cgk6gdt68281a" path="res://Assets/tela_inicial.png" id="2_q2psa"]
+[ext_resource type="FontFile" uid="uid://b5bo8ullpnvk8" path="res://Assets/Fonts/Alkhemikal.ttf" id="3_whjid"]
+[ext_resource type="Texture2D" uid="uid://b7r03it0ifang" path="res://Assets/base_train_maior/base_train_maior.png" id="4_pxl3w"]
+[ext_resource type="Texture2D" uid="uid://cxe6q12hob50l" path="res://Assets/Monsters/eye_enemy_arrumadio.png" id="5_ajrj5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b5g0d"]
+font = ExtResource("3_whjid")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_vntpu"]
+font = ExtResource("3_whjid")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_dmkfh"]
+font = ExtResource("3_whjid")
+font_size = 36
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,15 +25,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5n2x6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.384314, 0.0352941, 0.00784314, 0.580392)
+texture = ExtResource("2_q2psa")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -29,8 +48,106 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Button" type="Button" parent="MarginContainer"]
+[node name="Button" type="Button" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Start"
+offset_left = 11.0
+offset_top = 32.0
+offset_right = 1123.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("3_whjid")
+theme_override_font_sizes/font_size = 64
+text = "
+
+
+Start Nightmare"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 525.0
+offset_right = 665.0
+offset_bottom = 597.0
+theme_override_fonts/font = ExtResource("3_whjid")
+theme_override_font_sizes/font_size = 64
+text = "Tutorial"
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial"]
+position = Vector2(297, 203)
+texture = ExtResource("4_pxl3w")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tutorial"]
+position = Vector2(852, 203)
+texture = ExtResource("4_pxl3w")
+hframes = 2
+
+[node name="EyeEnemyArrumadio" type="Sprite2D" parent="Tutorial"]
+position = Vector2(856, 247)
+texture = ExtResource("5_ajrj5")
+hframes = 4
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 345.0
+offset_right = 652.0
+offset_bottom = 399.0
+text = "- When you enter a new wagon, a figure will be waiting for you 
+- Use your flashlight by PRESSING THE LEFT BUTTON to see any details
+ about the figure as fast as you can before the battery runs out
+- Every time you blink, your flashlight will recharge"
+label_settings = SubResource("LabelSettings_b5g0d")
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 336.0
+offset_right = 1136.0
+offset_bottom = 471.0
+text = "- But every blink will make the figure come more closer
+- The closer it gets, the faster your sanity drains
+- If you think it's a monster, shoot it if the RIGHT MOUSE BUTTON
+- If you think it's a human, just wait until it passes throuh you, 
+recharging some sanity
+- And you will procced to the next wagon"
+label_settings = SubResource("LabelSettings_vntpu")
+
+[node name="Label3" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 783.0
+offset_top = 486.0
+offset_right = 927.0
+offset_bottom = 522.0
+text = "Good Luck"
+label_settings = SubResource("LabelSettings_dmkfh")
+
+[node name="StartFromTutorial" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 539.0
+offset_right = 656.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("3_whjid")
+theme_override_font_sizes/font_size = 34
+text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Tutorial/StartFromTutorial" to="." method="_on_start_from_tutorial_pressed"]

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var progress_bar: ProgressBar = $MarginContainer/ProgressBar
+#@onready var progress_bar: ProgressBar = $MarginContainer/ProgressBar
 @onready var gun: AnimatedSprite2D = $Gun
 @onready var lantern: AnimatedSprite2D = $Lantern
 @onready var point_light_2d: PointLight2D = $PointLight2D
@@ -13,11 +13,12 @@ extends CanvasLayer
 @onready var music_2: AudioStreamPlayer = $Music2
 @onready var music_3: AudioStreamPlayer = $Music3
 @onready var music_4: AudioStreamPlayer = $Music4
+@onready var progress_bar: TextureProgressBar = $MarginContainer/TextureProgressBar
 
 
 var can_shoot: bool = false
 var can_lantern: bool = false
-var madness_drain_speed = [0.01,0.02,0.05] #[0.01,0.02,0.05]
+var madness_drain_speed = [0.02,0.02,0.02] #[0.01,0.02,0.05]
 var initial_madness : float #é o nivel de madness qnd começou a fase, pq se o player nao atirar no player, volta pra esse nivel
 var step = madness_drain_speed[0]
 var light_position:Vector2 = Vector2.ZERO
@@ -25,6 +26,12 @@ var is_monster: bool = true
 var tween:Tween
 var tween2:Tween
 var is_game_over: bool = false
+var enemy_phase: int = 1
+var phase1: bool = true
+var phase2: bool = false
+var phase3: bool = false
+var phase4: bool = false
+
 
 func _ready() -> void:
 	SignalManager.save_madness.connect(save_madness)
@@ -66,57 +73,50 @@ func _process(delta: float) -> void:
 
 	print_debug(progress_bar.value)
 	
-	if progress_bar.value == 0.5:
-		music_1.play()
+	if progress_bar.value >= 1 and progress_bar.value < 25:#progress_bar.value == 0.5:
+		phase2 = false
+		phase3 = false
+		phase4 = false
+		if phase1 == true:
+			phase1 = false
+			SignalManager.play_music.emit(0.5)
+		#GameManager.play_music(music_1,"music1")
+		##music_1.play()
 		
 		
-	if progress_bar.value == 25: #25
-		tween = get_tree().create_tween()
-		tween2 = get_tree().create_tween()
-		tween.tween_property(music_1,"volume_db",-30,2).from(0)
-		if music_1.volume_db == -30:
-			tween.kill()
-		music_1.stop()
-		
-		music_2.play()
-		tween2.tween_property(music_2,"volume_db",0,2).from(-30)
-		if music_2.volume_db == 0:
-			tween.kill()
-		
+	if progress_bar.value >= 25  and progress_bar.value < 50: #25
+		phase1 = false
+		phase3 = false
+		phase4 = false
+		if phase2 == false:
+			phase2 = true
+			print_debug("entrou")
+			SignalManager.play_music.emit(25)
+
 	
-	if progress_bar.value == 50: #50
-		tween = get_tree().create_tween()
-		tween2 = get_tree().create_tween()
-		tween.tween_property(music_2,"volume_db",-30,2).from(0)
-		if music_2.volume_db == -30:
-			tween.kill()
-		music_2.stop()
-		
-		music_3.play()
-		tween2.tween_property(music_3,"volume_db",0,2).from(-30)
-		if music_3.volume_db == 0:
-			tween.kill()
-	#
-	if progress_bar.value == 75: #75
-		tween = get_tree().create_tween()
-		tween2 = get_tree().create_tween()
-		tween.tween_property(music_3,"volume_db",-30,1).from(0)
-		if music_3.volume_db == -30:
-			tween.kill()
-		music_3.stop()
-		
-		music_4.play()
-		tween2.tween_property(music_4,"volume_db",0,1).from(-30)
-		if music_4.volume_db == 0:
-			tween.kill()
-	
+	if progress_bar.value >= 50 and progress_bar.value < 75: #50
+		phase1 = false
+		phase2 = false
+		phase4 = false
+		if phase3 == false:
+			phase3 = true
+			SignalManager.play_music.emit(50)
+
+	if progress_bar.value >= 75: #75
+		phase1 = false
+		phase2 = false
+		phase3 = false
+		if phase4 == false:
+			phase4 = true
+		SignalManager.play_music.emit(75)
+
 	if progress_bar.value == 100:
 		if is_game_over == false:
 			game_over()
 			SignalManager.on_game_over.emit()
 			
 			is_game_over = true
-			print_debug("teste")
+			
 		
 	#endregion
 		
@@ -170,7 +170,7 @@ func game_over():
 	can_shoot = false
 	can_lantern = false
 	if is_game_over == true and Input.is_action_just_pressed("shoot"):
-		SceneManager.change_scene("main")
+		SceneManager.change_scene() #"main"
 
 func regen_madness():
 	progress_bar.value -= 10
