@@ -7,6 +7,12 @@ extends Node2D
 @onready var effects: AudioStreamPlayer = $Effects
 @onready var innocent: AnimationPlayer = $Innocent
 
+@onready var game_over_animation: AnimatedSprite2D = $BlinkCanvas/GameOverAnimation
+@onready var game_over_label: Label = $BlinkCanvas/GameOverAnimation/GameOverLabel
+@onready var game_over_fade: AnimationPlayer = $BlinkCanvas/GameOverAnimation/GameOverFade
+
+
+
 
 @export var monster: bool = true
 
@@ -16,13 +22,16 @@ var can_shoot: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.play_clip(train,GameManager.SOUND_TRAIN)
+	SignalManager.on_game_over.connect(game_over)
 	SignalManager.monster.emit(monster) #se é monstro ou nao
+	game_over_animation.hide()
+	game_over_label.hide()
 	#blink.play("RESET")
 	#innocent.hide()
 	labels = $BlinkCanvas/Node2D.get_children()
 	for label in labels:
 		label.hide()
-
+	#texture_rect.play()
 func _process(delta: float) -> void:
 	#pass
 	if Input.is_action_pressed("lantern"):
@@ -72,9 +81,8 @@ func _on_third_phase_timeout() -> void:
 	$FourthPhase.start()
 
 func _on_fourth_phase_timeout() -> void:
-	blink.play("blinkin") #aqui tem que ser o blink lento, tocar a risada e se pa mordida
-	await blink.animation_finished
-	GameManager.play_clip(effects,GameManager.SOUND_LAUGH)
+	
+	game_over()
 	SignalManager.on_death.emit()
 	
 
@@ -100,6 +108,16 @@ func play_steps() -> void:
 	await get_tree().create_timer(3).timeout
 	GameManager.play_clip(effects,GameManager.SOUND_NEW_MONSTER)
 	
-#func laugh():
-	#GameManager.play_clip(effects,GameManager.SOUND_LAUGH)
-	#
+func game_over():
+	#blink.play("blinkin") #aqui tem que ser o blink lento, tocar a risada e se pa mordida
+	#await blink.animation_finished
+	GameManager.play_clip(effects,GameManager.SOUND_BITE)
+	game_over_animation.show()
+	game_over_animation.play("game_over")
+	await get_tree().create_timer(2).timeout
+	GameManager.play_clip(effects,GameManager.SOUND_LAUGH)
+	await get_tree().create_timer(1).timeout
+	game_over_label.show()
+	game_over_fade.play("game_over_fade")
+	
+	

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cyd5n6mm754bo" path="res://Assets/Monsters/INIMIGO_chapeu.png" id="2_faqsh"]
 
 [node name="Vagao3" instance=ExtResource("1_a64y1")]
+monster = true
 
 [node name="Enemy" parent="." index="10"]
 texture = ExtResource("2_faqsh")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4wp8lgnx5slb"
+path="res://.godot/imported/Monstro_voz - Track 10.wav-dd5d96f61a225eff326e2deb66b61516.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Monstro tracks/Monstro_voz - Track 10.wav"
+dest_files=["res://.godot/imported/Monstro_voz - Track 10.wav-dd5d96f61a225eff326e2deb66b61516.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfr8hfytudli1"
+path="res://.godot/imported/terror loop2.wav-27e594d9729388a24033886ea74a25fb.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Music/terror loop2.wav"
+dest_files=["res://.godot/imported/terror loop2.wav-27e594d9729388a24033886ea74a25fb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
