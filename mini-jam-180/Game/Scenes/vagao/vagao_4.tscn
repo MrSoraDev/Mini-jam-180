@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8vnk2vsm5rrs"]
+
+[ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_kj8cy"]
+
+[node name="Vagao1" instance=ExtResource("1_kj8cy")]
+
+[editable path="HUD"]
