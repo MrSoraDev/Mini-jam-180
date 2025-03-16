@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://di6qecnqtylr7"]
+[gd_scene load_steps=13 format=3 uid="uid://di6qecnqtylr7"]
 
 [ext_resource type="Script" path="res://Game/Scenes/last.gd" id="1_7tsjg"]
 [ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="2_4733i"]
@@ -10,9 +10,14 @@
 font = ExtResource("3_irnkc")
 font_size = 124
 
+[sub_resource type="LabelSettings" id="LabelSettings_2haer"]
+font = ExtResource("3_irnkc")
+font_size = 124
+
 [sub_resource type="LabelSettings" id="LabelSettings_mf8iu"]
 font = ExtResource("3_irnkc")
 font_size = 124
+font_color = Color(1, 0.168627, 0, 1)
 
 [sub_resource type="Animation" id="Animation_mpekm"]
 resource_name = "default"
@@ -299,7 +304,7 @@ offset_left = 632.0
 offset_right = 672.0
 offset_bottom = 124.0
 text = "!"
-label_settings = SubResource("LabelSettings_mf8iu")
+label_settings = SubResource("LabelSettings_2haer")
 
 [node name="?" type="Label" parent="You Survived"]
 modulate = Color(1, 1, 1, 0)

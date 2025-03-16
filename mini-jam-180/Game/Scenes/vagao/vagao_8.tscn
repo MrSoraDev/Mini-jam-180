@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bf5dtyy2gl1xn" path="res://Assets/Monsters/bambolas.png" id="2_gdxvd"]
 
 [node name="Vagao1" instance=ExtResource("1_765rd")]
+first_wagon = false
 monster = false
 
 [node name="Enemy" parent="." index="10"]

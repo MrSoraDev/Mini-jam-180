@@ -598,6 +598,7 @@ shader_parameter/meltiness = 1.0
 
 [node name="Vagao1" type="Node2D"]
 script = ExtResource("1_fd0x1")
+first_wagon = true
 
 [node name="Blink" type="AnimationPlayer" parent="."]
 libraries = {
@@ -817,6 +818,7 @@ volume_db = -7.525
 
 [node name="FirstBreath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_gkmx7")
+volume_db = 10.0
 
 [connection signal="timeout" from="FirstPhase" to="." method="_on_first_phase_timeout"]
 [connection signal="timeout" from="SecondPhase" to="." method="_on_second_phase_timeout"]

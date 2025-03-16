@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csamea248sxj0" path="res://Assets/Monsters/marionette_inimigo.png" id="2_jfk87"]
 
 [node name="Vagao1" instance=ExtResource("1_2i6cp")]
+first_wagon = false
 
 [node name="Enemy" parent="." index="10"]
 texture = ExtResource("2_jfk87")

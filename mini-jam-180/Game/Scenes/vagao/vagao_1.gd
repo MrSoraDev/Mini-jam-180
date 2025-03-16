@@ -70,17 +70,20 @@ func human_shot():
 
 func monster_shot():
 	stop_timers() #para os timers mas o sinal se é monstro ja foi enviado
+	#region respingos
 	var blood1 = bloodpool[randi_range(0,3)]
 	var blood2 = bloodpool[randi_range(0,3)]
 	blood1.global_position = Vector2(randi_range(100,1000), randi_range(100, 600))
 	blood2.global_position = Vector2(randi_range(100,1000), randi_range(100, 600))
 	blood1.show()
 	blood2.show()
-	GameManager.play_scream(monster_sounds,str(randi_range(0,3)))
+	#endregion
+	GameManager.play_scream(monster_sounds,str(randi_range(0,3)))#grito do monstro
 	enemy.hide()
-	SignalManager.regen_madness.emit()
-	await get_tree().create_timer(0.2).timeout
+	#SignalManager.regen_madness.emit()
+	await get_tree().create_timer(0.5).timeout
 	SceneManager.change_scene()
+	SignalManager.save_madness.emit()
 	
 
 func _on_first_phase_timeout() -> void: #libera atirar e usar a lanterna

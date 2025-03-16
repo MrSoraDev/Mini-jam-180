@@ -1,6 +1,6 @@
 extends Node
 
-var scene_actual = 0
+var scene_actual = 1
 
 var scene_numbers: Dictionary = {
 	0 : "main",
@@ -37,10 +37,10 @@ var game_scenes: Dictionary = {
 }
 
 func change_scene() ->void: #name:String
-	scene_actual += 2
-	if scene_actual == 7: #fase final
-		pass #vai pra fase final
-		#get_tree().change_scene_to_packed(game_scenes["last"])
+	scene_actual += 1
+	#if scene_actual == 11: #fase final
+		#pass #vai pra fase final
+		##get_tree().change_scene_to_packed(game_scenes["last"])
 		
 	
 	get_tree().change_scene_to_packed(game_scenes[scene_numbers[scene_actual]])

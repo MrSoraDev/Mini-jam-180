@@ -27,6 +27,7 @@ animations = [{
 }]
 
 [node name="Vagao1" instance=ExtResource("1_stiay")]
+first_wagon = false
 monster = false
 
 [node name="Level" parent="EnemyLayer" index="0"]
