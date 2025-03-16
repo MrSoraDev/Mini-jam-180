@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://l6kxv1548u5i"]
+
+[ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_765rd"]
+[ext_resource type="Texture2D" uid="uid://bf5dtyy2gl1xn" path="res://Assets/Monsters/bambolas.png" id="2_gdxvd"]
+
+[node name="Vagao1" instance=ExtResource("1_765rd")]
+monster = false
+
+[node name="Enemy" parent="." index="10"]
+texture = ExtResource("2_gdxvd")
+
+[editable path="HUD"]

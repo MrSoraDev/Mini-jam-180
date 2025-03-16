@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://h3wq1wjiso0l"]
+
+[ext_resource type="PackedScene" uid="uid://ciwpg8154rlsl" path="res://Game/Scenes/vagao/vagao_1.tscn" id="1_gaxvk"]
+[ext_resource type="Texture2D" uid="uid://cs6oqhlwo10m7" path="res://Assets/Monsters/inimigo_tartaruga.png" id="2_2d5i8"]
+
+[node name="Vagao1" instance=ExtResource("1_gaxvk")]
+
+[node name="Enemy" parent="." index="10"]
+texture = ExtResource("2_2d5i8")
+
+[editable path="HUD"]

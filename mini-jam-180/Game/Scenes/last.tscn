@@ -1,0 +1,401 @@
+[gd_scene load_steps=12 format=3 uid="uid://di6qecnqtylr7"]
+
+[ext_resource type="Script" path="res://Game/Scenes/last.gd" id="1_7tsjg"]
+[ext_resource type="Texture2D" uid="uid://buhvex43adjof" path="res://icon.svg" id="2_4733i"]
+[ext_resource type="FontFile" uid="uid://b5bo8ullpnvk8" path="res://Assets/Fonts/Alkhemikal.ttf" id="3_irnkc"]
+[ext_resource type="AudioStream" uid="uid://cilak85r4l84u" path="res://Assets/Sounds/heavy_breath.wav" id="4_8uv8m"]
+[ext_resource type="LabelSettings" uid="uid://dbeey74di0mdm" path="res://credits.tres" id="5_qgl5n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni21p"]
+font = ExtResource("3_irnkc")
+font_size = 124
+
+[sub_resource type="LabelSettings" id="LabelSettings_mf8iu"]
+font = ExtResource("3_irnkc")
+font_size = 124
+
+[sub_resource type="Animation" id="Animation_mpekm"]
+resource_name = "default"
+length = 20.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("You Survived:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.1, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("You Survived/!:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.5, 7.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("You Survived/?:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.6, 9.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon4:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(9.8, 11.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(11.1, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Icon2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(12.5, 13.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Icon3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(13.8, 15.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Icon5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(15.1, 16.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Created By:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(7.9, 9.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_des5d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("You Survived:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("You Survived/!:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("You Survived/?:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon4:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Icon2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Icon3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Icon5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Created By:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbro7"]
+_data = {
+"RESET": SubResource("Animation_des5d"),
+"default": SubResource("Animation_mpekm")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_db7wi"]
+font = ExtResource("3_irnkc")
+font_size = 36
+
+[node name="Last" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7tsjg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(600, 332)
+scale = Vector2(10.875, 6.5625)
+texture = ExtResource("2_4733i")
+
+[node name="You Survived" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 280.0
+offset_top = 184.0
+offset_right = 885.0
+offset_bottom = 308.0
+text = "You survived"
+label_settings = SubResource("LabelSettings_ni21p")
+
+[node name="!" type="Label" parent="You Survived"]
+layout_mode = 0
+offset_left = 632.0
+offset_right = 672.0
+offset_bottom = 124.0
+text = "!"
+label_settings = SubResource("LabelSettings_mf8iu")
+
+[node name="?" type="Label" parent="You Survived"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 632.0
+offset_right = 672.0
+offset_bottom = 124.0
+text = "?"
+label_settings = SubResource("LabelSettings_mf8iu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fbro7")
+}
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8uv8m")
+
+[node name="Created By" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 320.0
+offset_right = 631.0
+offset_bottom = 356.0
+text = "Created By"
+label_settings = SubResource("LabelSettings_db7wi")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(112, 544)
+texture = ExtResource("2_4733i")
+
+[node name="Label" type="Label" parent="Icon4"]
+offset_left = -56.0
+offset_top = -136.0
+offset_right = 59.0
+offset_bottom = -85.0
+text = "Programmer:
+  MrSoraDev"
+label_settings = ExtResource("5_qgl5n")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(360, 440)
+texture = ExtResource("2_4733i")
+
+[node name="Label" type="Label" parent="Icon"]
+offset_left = -48.0
+offset_top = 80.0
+offset_right = 53.0
+offset_bottom = 131.0
+text = "    Art:
+YrisGaming"
+label_settings = ExtResource("5_qgl5n")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(576, 536)
+texture = ExtResource("2_4733i")
+
+[node name="Label" type="Label" parent="Icon2"]
+offset_left = -24.0
+offset_top = -128.0
+offset_right = 17.0
+offset_bottom = -77.0
+text = " Art:
+Yuki"
+label_settings = ExtResource("5_qgl5n")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(816, 440)
+texture = ExtResource("2_4733i")
+
+[node name="Label" type="Label" parent="Icon3"]
+offset_left = -24.0
+offset_top = 88.0
+offset_right = 30.0
+offset_bottom = 137.0
+text = "Sound:
+Lunae"
+label_settings = ExtResource("5_qgl5n")
+horizontal_alignment = 1
+
+[node name="Icon5" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1048, 528)
+texture = ExtResource("2_4733i")
+
+[node name="Label" type="Label" parent="Icon5"]
+offset_left = -56.0
+offset_top = -128.0
+offset_right = 45.0
+offset_bottom = -77.0
+text = " Art Assist:
+    Isacc"
+label_settings = ExtResource("5_qgl5n")

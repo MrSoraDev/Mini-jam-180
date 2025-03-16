@@ -14,7 +14,7 @@ extends Node2D
 
 
 
-
+@export var first_wagon: bool = false
 @export var monster: bool = true
 
 var bloodpool
@@ -81,6 +81,7 @@ func monster_shot():
 	SignalManager.regen_madness.emit()
 	await get_tree().create_timer(0.2).timeout
 	SceneManager.change_scene()
+	
 
 func _on_first_phase_timeout() -> void: #libera atirar e usar a lanterna
 	blinking()
@@ -102,22 +103,24 @@ func _on_third_phase_timeout() -> void:
 	blinking()
 	monster_sounds.volume_db = 5
 	
-	print_debug("teste")
+	
 	#enemy.scale = Vector2(5.5,5.5)
 	
 	$FourthPhase.start()
 
 func _on_fourth_phase_timeout() -> void:
-	
-	game_over()
-	SignalManager.on_death.emit()
+	if monster:
+		game_over()
+		SignalManager.on_death.emit()
+	else:
+		SceneManager.change_scene()
 	
 
 func blinking()-> void:
 
 	blink.play("blinkfast")
 	#await blink.animation_finished
-	SignalManager.reset.emit()
+	
 	#enemy.frame += 1
 
 func change_frame() -> void:
@@ -134,6 +137,8 @@ func play_steps() -> void:
 	GameManager.play_clip(effects,GameManager.SOUND_STEPS)
 	await get_tree().create_timer(3).timeout
 	GameManager.play_clip(effects,GameManager.SOUND_NEW_MONSTER)
+	if first_wagon:
+		$FirstBreath.play()
 	
 func game_over():
 	#blink.play("blinkin") #aqui tem que ser o blink lento, tocar a risada e se pa mordida
@@ -147,4 +152,5 @@ func game_over():
 	game_over_label.show()
 	game_over_fade.play("game_over_fade")
 	
-	
+func reset():
+	SignalManager.reset.emit()

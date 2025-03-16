@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbeey74di0mdm"]
+
+[ext_resource type="FontFile" uid="uid://b5bo8ullpnvk8" path="res://Assets/Fonts/Alkhemikal.ttf" id="1_56dr6"]
+
+[resource]
+font = ExtResource("1_56dr6")
+font_size = 24
